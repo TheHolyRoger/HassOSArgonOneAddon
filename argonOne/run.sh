@@ -101,7 +101,9 @@ t2=$(mkfloat "$(jq -r '.MediumRange'<options.json)")
 t3=$(mkfloat "$(jq -r '.HighRange'<options.json)")
 quiet=$(jq -r '.QuietProfile'<options.json)
 createEntity=$(jq -r '."Create a Fan Speed entity in Home Assistant"' <options.json)
-logTemp=$(jq -r '."Log current temperature every 30 seconds"' <options.json)
+logTemp=$(jq -r '."Log current temperature every poll"' <options.json)
+pollInterval=$(jq -r '."Seconds between polls"' <options.json)
+pollMultiplier=$(jq -r '."Update state every X polls"' <options.json)
 i2cDevice=$(jq -r '.i2cDevice'<options.json)
 
 ###
@@ -202,8 +204,8 @@ until false; do
     previousFanLevel=$fanLevel
   fi
   
-  sleep 30
+  sleep "${pollInterval}"
   thirtySecondsCount=$((thirtySecondsCount + 1))
-  #thirtySecondsCount mod 20 will be 0 once every 20 times, or approx. 10 minutes.
-  test $((thirtySecondsCount%20)) == 0 && test "${createEntity}" == "true" && fanSpeedReport "${fanPercent}" "${fanLevel}" "${fanMode}" "${cpuTemp}" "${CorF}"
+  #thirtySecondsCount mod pollMultiplier will be 0 once every pollMultiplier times.
+  test $((thirtySecondsCount%pollMultiplier)) == 0 && test "${createEntity}" == "true" && fanSpeedReport "${fanPercent}" "${fanLevel}" "${fanMode}" "${cpuTemp}" "${CorF}"
 done

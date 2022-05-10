@@ -1,7 +1,7 @@
 {
   "name": "ArgonOne - Debian GNU/Linux 11 (bullseye)",
   "image": "theholiestroger/{arch}-hassosargonone",
-  "version": "27.0",
+  "version": "28.0",
   "slug": "argon_one_temp",
   "description": "Actively keeping your Argon One cool.",
   "arch": ["armhf", "armv7", "aarch64"],
@@ -19,7 +19,9 @@
     "HighRange": 65,
     "QuietProfile": true,
     "Create a Fan Speed entity in Home Assistant": true,
-    "Log current temperature every 30 seconds": true
+    "Log current temperature every poll": false,
+    "Seconds between polls": 30,
+    "Update state every X polls": 20
   },
   "schema": {
     "CorF": "str",
@@ -29,6 +31,8 @@
     "HighRange": "int(0,255)",
     "QuietProfile": "bool",
     "Create a Fan Speed entity in Home Assistant": "bool",
-    "Log current temperature every 30 seconds": "bool"
+    "Log current temperature every poll": "bool",
+    "Seconds between polls": "int(0,600)",
+    "Update state every X polls": "int(0,100)"
   }
 }
