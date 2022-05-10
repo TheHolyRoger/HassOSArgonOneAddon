@@ -1,6 +1,7 @@
 ![image](gitResources/activecooling.jpg)
 
 This Addon enables and activates automated active cooling.
+Thank you to @znanywawa for i2c contributions.
 
 # Installation
 

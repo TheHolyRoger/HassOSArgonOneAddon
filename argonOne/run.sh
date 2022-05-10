@@ -75,7 +75,10 @@ action() {
   fanPercentHex=$(printf '%x' "${fanPercent}")
   printf '%(%Y-%m-%d_%H:%M:%S)T'
   echo ": ${cpuTemp}${CorF} - Level ${fanLevel} - Fan ${fanPercent}% (${fanMode})";
-  i2cset -y 1 0x01a "${fanPercentHex}"
+  if [ "${i2cDevice}" == "1" ]; then i2cset -y 1 0x01a "${fanPercentHex}"
+  elif [ "${i2cDevice}" == "2" ]; then i2cset -y 2 0x01a "${fanPercentHex}"
+  elif [ "${i2cDevice}" == "3" ]; then i2cset -y 3 0x01a "${fanPercentHex}"
+  fi
   returnValue=${?}
   test "${createEntity}" == "true" && fanSpeedReport "${fanPercent}" "${fanLevel}" "${fanMode}" "${cpuTemp}" "${CorF}" &
   return ${returnValue}
@@ -91,6 +94,7 @@ t3=$(mkfloat "$(jq -r '.HighRange'<options.json)")
 quiet=$(jq -r '.QuietProfile'<options.json)
 createEntity=$(jq -r '."Create a Fan Speed entity in Home Assistant"' <options.json)
 logTemp=$(jq -r '."Log current temperature every 30 seconds"' <options.json)
+i2cDevice=$(jq -r '.i2cDevice'<options.json)
 
 ###
 #initial setup - prepare things for operation
@@ -99,15 +103,15 @@ fanLevel=-1;
 previousFanLevel=-1;
 
 #Trap exits and set fan to 100% like a safe mode.
-trap 'echo "Failed ${LINENO}: $BASH_COMMAND";i2cset -y 1 0x01a 0x63;previousFanLevel=-1;fanLevel=-1; echo Safe Mode Activated!;' ERR EXIT INT TERM
+trap 'echo "Failed ${LINENO}: $BASH_COMMAND";i2cset -y ${i2cDevice} 0x01a 0x63;previousFanLevel=-1;fanLevel=-1; echo Safe Mode Activated!;' ERR EXIT INT TERM
 
-if [ ! -e /dev/i2c-1 ]; then
+if [ ! -e /dev/i2c-1 ] && [ ! -e /dev/i2c-2 ] && [ ! -e /dev/i2c-3 ]; then
   echo "Cannot find I2C port.  You must enable I2C for this add-on to operate properly";
   exit 1;
 fi
 
 echo "Detecting Layout of i2c, we expect to see \"1a\" here."
-i2cDetect=$(i2cdetect -y -a 1);
+i2cDetect=$(i2cdetect -y -a "${i2cDevice}");
 echo -e "${i2cDetect}"
 
 if [[ "$i2cDetect" != *"1a"* ]]; then 

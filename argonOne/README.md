@@ -1,11 +1,11 @@
-![image](https://raw.githubusercontent.com/adamoutler/HassOSArgonOneAddon/main/gitResources/activecooling.jpg)
+![image](https://raw.githubusercontent.com/TheHolyRoger/HassOSArgonOneAddon/main/gitResources/activecooling.jpg)
 
-This is an addon for Argon One in Home Assistant.
+This is an addon for Argon One in Home Assistant for Debian GNU/Linux 11 (bullseye).
 It's essentially a script that runs in a docker container.
 It enables and automates the Argon One Active Cooling System with your specifications.
 
 This Addon keeps your temperature within specified ranges.
-![image](https://raw.githubusercontent.com/adamoutler/HassOSArgonOneAddon/main/gitResources/FanRangeExplaination.png)
+![image](https://raw.githubusercontent.com/TheHolyRoger/HassOSArgonOneAddon/main/gitResources/FanRangeExplaination.png)
 
 # Support
 

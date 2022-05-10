@@ -2,6 +2,8 @@
 
 | Version    | Change                                                    |
 | ---------- | --------------------------------------------------------- |
+| **26.0**   | Added ability to use different I2C bus for Argon One.     |
+| **25.0**   | Edited version for Debian GNU/Linux 11 (bullseye).        |
 | **24.0**   | Fix fanspeed display in sensor                            |
 | **23.0**   | Fix problem with safe mode activation when network fails  |
 | **23**     | Temperature in Speed Entity. Entity reported every 10 min |

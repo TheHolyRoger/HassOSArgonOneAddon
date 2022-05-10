@@ -1,6 +1,12 @@
 # Configuration
 
-![image](https://raw.githubusercontent.com/adamoutler/HassOSArgonOneAddon/main/gitResources/Configuration.png)
+## I2C bus configuration
+
+Set I2C bus to be used.
+
+- **i2cDevice** - Configures which I2C bus should be scanned (1, 2 or 3).
+
+![image](https://raw.githubusercontent.com/TheHolyRoger/HassOSArgonOneAddon/main/gitResources/Configuration.png)
 
 ## Celsius or Fahrenheit
 
@@ -10,7 +16,7 @@ Choose Celsius or Fahrenheit.
 
 ## Temperature Ranges
 
-![image](https://raw.githubusercontent.com/adamoutler/HassOSArgonOneAddon/main/gitResources/FanRangeExplaination.png)
+![image](https://raw.githubusercontent.com/TheHolyRoger/HassOSArgonOneAddon/main/gitResources/FanRangeExplaination.png)
 
 Set your fan ranges appropriately.
 

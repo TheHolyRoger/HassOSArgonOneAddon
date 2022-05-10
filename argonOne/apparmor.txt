@@ -22,6 +22,8 @@ profile deskpipro flags=(attach_disconnected,mediate_deleted) {
   /var/run/** mrwkl,
   /var/run/ mrwkl,
   /dev/i2c-1 mrwkl,
+  /dev/i2c-2 mrwkl,
+  /dev/i2c-3 mrwkl,
 
   # Data access
   /data/** rw,
