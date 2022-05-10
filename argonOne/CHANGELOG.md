@@ -2,6 +2,7 @@
 
 | Version    | Change                                                    |
 | ---------- | --------------------------------------------------------- |
+| **27.0**   | Add separate temperature sensor .                         |
 | **26.0**   | Added ability to use different I2C bus for Argon One.     |
 | **25.0**   | Edited version for Debian GNU/Linux 11 (bullseye).        |
 | **24.0**   | Fix fanspeed display in sensor                            |

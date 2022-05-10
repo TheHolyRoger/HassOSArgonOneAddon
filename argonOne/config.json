@@ -1,7 +1,7 @@
 {
   "name": "ArgonOne - Debian GNU/Linux 11 (bullseye)",
   "image": "theholiestroger/{arch}-hassosargonone",
-  "version": "26.0",
+  "version": "27.0",
   "slug": "argon_one_temp",
   "description": "Actively keeping your Argon One cool.",
   "arch": ["armhf", "armv7", "aarch64"],
