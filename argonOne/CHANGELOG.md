@@ -2,6 +2,7 @@
 
 | Version    | Change                                                    |
 | ---------- | --------------------------------------------------------- |
+| **29.0**   | Fix latest HASS.                                          |
 | **28.0**   | Add custom polling intervals.                             |
 | **27.0**   | Add separate temperature sensor .                         |
 | **26.0**   | Added ability to use different I2C bus for Argon One.     |
